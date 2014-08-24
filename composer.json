@@ -1,0 +1,22 @@
+{
+	"name": "albertborsos/yii2-historizer",
+	"description": "Yii2 Model Historizer Extension",
+	"type": "yii2-extension",
+	"keywords": ["yii2","extension","model","historizer"],
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Albert Borsos",
+			"email": "blog@borsosalbert.hu"
+		}
+	],
+    "require": {
+        "albertborsos/yii2-lib": "*",
+        "albertborsos/yii2-user": "*"
+    },
+	"autoload": {
+		"psr-4": {
+			"albertborsos\\yii2historizer\\": ""
+		}
+	}
+}

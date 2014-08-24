@@ -28,7 +28,8 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \albertborsos\yii2historizer\AutoloadExample::widget(); ?>```
+<?= \albertborsos\yii2historizer\AutoloadExample::widget(); ?>
+```
 
 Init
 ----

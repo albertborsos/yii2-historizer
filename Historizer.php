@@ -3,6 +3,7 @@
 namespace albertborsos\yii2historizer;
 
 use albertborsos\yii2lib\db\ActiveRecord;
+use albertborsos\yii2lib\helpers\S;
 use Yii;
 use yii\helpers\Json;
 
@@ -39,7 +40,7 @@ class Historizer extends ActiveRecord
     public function rules()
     {
         return [
-            [['model_class', 'model_id', 'model_attributes', 'created_at', 'created_user', 'updated_at', 'updated_user', 'status'], 'required'],
+            [['model_class', 'model_id', 'model_attributes', 'status'], 'required'],
             [['model_id', 'created_at', 'created_user', 'updated_at', 'updated_user'], 'integer'],
             [['model_attributes'], 'string'],
             [['model_class'], 'string', 'max' => 512],
@@ -68,6 +69,7 @@ class Historizer extends ActiveRecord
     public function beforeValidate()
     {
         if (parent::beforeValidate()){
+            $this->status = self::STATUS_ACTIVE;
             return true;
         }else{
             return false;
@@ -122,7 +124,9 @@ class Historizer extends ActiveRecord
         $newAttributes = $model->attributes;
         $oldAttributes = $oldModel->attributes;
         foreach($newAttributes as $id => $value){
-            if ($newAttributes[$id] !== $oldAttributes[$id]){
+            $new = preg_replace('/\s+/', ' ', $newAttributes[$id]);
+            $old = preg_replace('/\s+/', ' ', $oldAttributes[$id]);
+            if ($new != $old){
                 return false;
             }
         }

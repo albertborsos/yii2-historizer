@@ -33,7 +33,7 @@ Once the extension is installed, simply use it in your code by  :
 Init
 ----
 
-```
+```sql
 CREATE TABLE IF NOT EXISTS `ext_historizer_archives` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `model_class` varchar(512) NOT NULL,

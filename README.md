@@ -34,12 +34,6 @@ Init
 ----
 
 ```
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `ext_tbl_ahistorizer_histories`
---
-
 CREATE TABLE IF NOT EXISTS `ext_historizer_archives` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `model_class` varchar(512) NOT NULL,
@@ -52,6 +46,4 @@ CREATE TABLE IF NOT EXISTS `ext_historizer_archives` (
   `status` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
 ```

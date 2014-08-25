@@ -99,20 +99,24 @@ class Historizer extends ActiveRecord
      * @param \albertborsos\yii2lib\db\ActiveRecord $model
      */
     public static function createArchive($model){
-        $class = get_class($model); /** @var \albertborsos\yii2lib\db\ActiveRecord $class */
+        if (!$model->getIsNewRecord()){
+            $class = get_class($model); /** @var \albertborsos\yii2lib\db\ActiveRecord $class */
 
-        $oldModel = $class::findOne(['id' => $model->getPrimaryKey()]);
-        if (!self::attributesAreSame($model, $oldModel)){
-            $archive = new Historizer();
-            $archive->model_class      = $class;
-            $archive->model_id         = $model->getPrimaryKey();
-            $archive->model_attributes = Json::encode($oldModel->attributes);
+            $oldModel = $class::findOne(['id' => $model->getPrimaryKey()]);
+            if (!self::attributesAreSame($model, $oldModel)){
+                $archive = new Historizer();
+                $archive->model_class      = $class;
+                $archive->model_id         = $model->getPrimaryKey();
+                $archive->model_attributes = Json::encode($oldModel->attributes);
 
-            if (!$archive->save()){
-                $archive->throwNewException('Archiválás nem sikerült!');
+                if (!$archive->save()){
+                    $archive->throwNewException('Archiválás nem sikerült!');
+                }
+            }else{
+                return false;
             }
         }else{
-            return false;
+            return true;
         }
     }
 

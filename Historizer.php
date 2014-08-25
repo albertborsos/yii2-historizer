@@ -116,7 +116,7 @@ class Historizer extends ActiveRecord
                 return false;
             }
         }else{
-            return true;
+            return false;
         }
     }
 

@@ -3,7 +3,6 @@
 namespace albertborsos\yii2historizer;
 
 use albertborsos\yii2lib\db\ActiveRecord;
-use albertborsos\yii2lib\helpers\S;
 use Yii;
 use yii\helpers\Json;
 

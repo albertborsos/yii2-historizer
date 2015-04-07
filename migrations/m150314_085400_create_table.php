@@ -7,7 +7,6 @@ class m150314_085400_create_table extends Migration
 {
     public function up()
     {
-        $this->dropTable('ext_historizer_archives');
         $this->createTable('ext_historizer_archives', [
             'id' => 'pk',
             'model_class' => "VARCHAR(512)",
